@@ -1,0 +1,30 @@
+<div class="account-pages mt-5 pt-5 mb-5">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 col-xl-5">
+                <div class="card bg-pattern">
+                    <div class="card-body p-4">
+                        <form  autocomplete="off" (ngSubmit)="onSubmitForm(form)" #form="ngForm">
+                            <div class="form-group mb-3">
+                                <label for="emailaddress">Email</label>
+                                <input class="form-control" type="email" id="email" name="email" required="" placeholder="Escriba su email">
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="password">Password</label>
+                                <input class="form-control" type="password" required="" id="password" name="password" placeholder="Escriba su password" minlength="6" maxlength="16">
+                            </div>
+                            <div class="form-group mb-0 text-center">
+                                <button class="btn btn-gradient btn-block" type="submit">Iniciar sesión</button>
+                            </div>
+                        </form>
+                        <div class="row mt-4">
+                            <div class="col-sm-12 text-center">
+                                <p class="text-muted mb-0">¿No tienes una cuenta?<a [routerLink]="['/register']"  class="text-dark ml-1"><b>Registrate</b></a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
