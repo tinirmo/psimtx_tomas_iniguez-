@@ -1,6 +1,11 @@
 <div id="wrapper">
-    <app-navbar></app-navbar>
-    <app-menu></app-menu>
-    <app-intereses></app-intereses>
+    <app-navbar [seccion]="seccion"></app-navbar>
+    <app-menu [seccion]="seccion"></app-menu>
+    <div class="content-page" *ngIf="seccion.id_perfil == 1">
+        <app-intereses></app-intereses>
+    </div>
+    <div class="content-page" *ngIf="seccion.id_perfil == 2">
+        <app-usuarios></app-usuarios>
+    </div>
 </div>
     

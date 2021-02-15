@@ -1,56 +1,56 @@
-<div class="content-page">
-    <div class="content">
+<div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box">
-                        <h4 class="page-title">Checkbox and Radio</h4>
+                        <h4 class="page-title">Lista de intereses</h4>
                     </div>
                 </div>
             </div>      
 			<div class="row">
-				<div class="col-lg-12">
+				<div class="col-md-12">
 					<div class="card-box">
-						<h4 class="header-title">Basic example</h4>
-						<p class="sub-header">
-							For basic styling—light padding and only horizontal dividers—add the base class <code>.table</code> to any <code>&lt;table&gt;</code>.
-						</p>
+						<h4 class="header-title">Intereses puede seleccionar como máximo 5</h4>
+						<form autocomplete="off" (ngSubmit)="onSubmitForm(form)" #form="ngForm">
+							<div class="form-row mt-2">
+								<div class="form-group col-md-8 mt-1">
+									<select2 [data]="intereses" [value]="usuario.intereses"  multiple="true" placeholder="Selecionar" name="intereses" [ngModel]="usuario.intereses"></select2>
+								</div>
+								<div class="form-group col-md-4 mt-1">
+									<button type="submit" class="btn btn-primary"><i class="fe-save"></i> Guardar</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="card-box">
+						<h4 class="header-title mb-3">Puedes ver los usuarios que tengan sus intereses en común</h4>
 						<div class="table-responsive">
-						<table class="table mb-0">
-							<thead>
-							<tr>
-								<th>#</th>
-								<th>First Name</th>
-								<th>Last Name</th>
-								<th>Username</th>
-							</tr>
-							</thead>
-							<tbody>
-							<tr>
-								<th scope="row">1</th>
-								<td>Mark</td>
-								<td>Otto</td>
-								<td>@mdo</td>
-							</tr>
-							<tr>
-								<th scope="row">2</th>
-								<td>Jacob</td>
-								<td>Thornton</td>
-								<td>@fat</td>
-							</tr>
-							<tr>
-								<th scope="row">3</th>
-								<td>Larry</td>
-								<td>the Bird</td>
-								<td>@twitter</td>
-							</tr>
-							</tbody>
-						</table>
+							<table class="table mb-0">
+								<thead>
+									<tr>
+										<th>Nombres</th>
+										<th>Intereses</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let item of interesesComunes">
+										<td>{{item.usuario}}</td>
+										<td>
+											<ul>
+												<li *ngFor="let interes of item.intereses">{{ interes }}</li>
+											</ul>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 						</div>
 					</div>
 				</div>
 			</div>
         </div>
     </div>
-    <app-footer></app-footer>
-</div>
+  <app-footer></app-footer>

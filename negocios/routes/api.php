@@ -17,13 +17,21 @@ use App\Http\Controllers\DefaultController;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+	return $request->user();
 });
 
 Route::get('obtenerintereses', [DefaultController::class, 'obtenerIntereses']);
-Route::get('obtenerusuarioscomunes', [DefaultController::class, 'obtenerUsuariosComunes']);
+Route::get('obtenerusuarios', [DefaultController::class, 'obtenerUsuarios']);
+Route::get('obtenerusuario/{id_usuario}', [DefaultController::class, 'obtenerUsuario']);
+Route::get('bloquearusuario/{id_usuario}', [DefaultController::class, 'bloquearUsuario']);
+Route::get('Activoasuario/{id_usuario}', [DefaultController::class, 'ActivoUsuario']);
+
 Route::post('login', [DefaultController::class, 'login']);
 Route::post('guardarusuario', [DefaultController::class, 'guardarUsuario']);
+Route::post('guardarinteresesusuario', [DefaultController::class, 'guardarInteresesUsuario']);
+Route::post('obtenerinterescomunes', [DefaultController::class, 'obtenerInteresComunes']);
+
 Route::put('modificarusuario/{id_usuario}', [DefaultController::class, 'modificarUsuario']);
+
 Route::delete('eliminarusuario/{id_usuario}', [DefaultController::class, 'eliminarUsuario']);
 

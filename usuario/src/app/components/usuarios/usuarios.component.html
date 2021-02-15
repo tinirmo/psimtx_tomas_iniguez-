@@ -1,0 +1,52 @@
+<div class="content">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-12">
+				<div class="page-title-box">
+					<h4 class="page-title">Usuarios</h4>
+				</div>
+			</div>
+		</div>      
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="card-box">
+					<div class="button-list float-right">
+						<button routerLink="/home/usuario/nuevo"  type="button" class="btn btn-success waves-light waves-effect width-md"><i class="fe-user-plus"></i> Añadir usuario</button>
+					</div>
+					<div class="table-responsive mt-5">
+					<table class="table mb-0">
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Nombre</th>
+								<th>Email</th>
+								<th>Perfil</th>
+								<th>Estado</th>
+								<th></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let usuario of usuarios; let i = index">
+								<th scope="row">{{ usuario.id }}</th>
+								<td>{{ usuario.nombre }}</td>
+								<td>{{ usuario.email }}</td>
+								<td>{{ usuario.perfil }}</td>
+								<td>{{ usuario.estado }}</td>
+								<td>
+									<div class="button-list">
+										<button [routerLink]="['/home/usuario', usuario.id ]"  type="button" class="btn btn-icon waves-effect btn-warning"><i class="fe-edit"></i></button>
+										<button (click)="clickEliminar(usuario, i)" type="button" class="btn btn-icon waves-effect btn-danger"><i class="fe-trash"></i></button>
+										<button *ngIf="usuario.id_estado == 1" (click)="clickBloquear(usuario)" type="button" class="btn btn-icon waves-effect btn-secondary"><i class="fe-lock"></i></button>
+										<button *ngIf="usuario.id_estado == 2" (click)="clickActivar(usuario)"  type="button" class="btn btn-icon waves-effect btn-success"><i class="fe-unlock"></i></button>
+									</div>	
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<app-footer></app-footer>

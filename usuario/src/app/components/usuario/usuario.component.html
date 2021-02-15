@@ -1,0 +1,65 @@
+<div id="wrapper">
+	<app-navbar [seccion]="seccion"></app-navbar>
+	<app-menu [seccion]="seccion"></app-menu>
+	<div class="content-page">
+		<div class="content">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="page-title-box">
+							<h4 class="page-title">Usuario</h4>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="card-box">
+							<button routerLink="/home" type="button" class="btn btn-secondary"><i class="fe-arrow-left"></i> Volver</button>
+							<form autocomplete="off" (ngSubmit)="onSubmitForm(form)" #form="ngForm">
+								<div class="form-row">
+									<div class="form-group col-md-12">
+										<label for="nombre" class="col-form-label">Nombre completo</label>
+										<input class="form-control" type="text" id="nombre" name="nombre"  placeholder="Esbriba su nombre completo" required [ngModel]="usuario.nombre" #nombre="ngModel"[class.is-invalid]="nombre.invalid && nombre.touched">
+									    <small *ngIf="nombre.invalid && nombre.touched && nombre.errors.required"class="form-text text-danger">Debe escribir su nombre completo</small>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="email" class="col-form-label">Email</label>
+										<input class="form-control" type="email" id="email" name="email" required placeholder="Esbriba su email" [ngModel]="usuario.email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [readonly]="usuario.id">
+										<small *ngIf="email.invalid && email.touched && email.errors.required"class="form-text text-danger">Debe escribir su email</small>
+										<small *ngIf="email.invalid && email.touched && email.errors.pattern"class="form-text text-danger">Esta mal escribir el formato de su email</small>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="perfil" class="col-form-label">Perfil</label>
+										<select class="form-control" name="id_perfil" id="id_perfil" required [ngModel]="usuario.id_perfil" #id_perfil="ngModel" [class.is-invalid]="id_perfil.invalid && id_perfil.touched" >
+											<option value="" selected>Seleccionar un perfil</option>
+											<option value="1">Común</option>
+											<option value="2">Admin</option>
+										</select>
+										<small *ngIf="id_perfil.invalid && id_perfil.touched && id_perfil.errors.required"class="form-text text-danger">Debe seleccionar su perfil</small>
+									</div>
+									<div class="form-group col-md-12">
+										<label for="intereses" class="col-form-label">Intereses puede seleccionar como máximo 5</label>
+									 	<select2 [data]="intereses" [value]="usuario.intereses"  multiple="true" placeholder="Selecionar" name="intereses" [ngModel]="usuario.intereses"></select2>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="password" class="col-form-label">Password</label>
+										<input class="form-control" type="password" [required]="!usuario.id" id="password" name="password" placeholder="Esbriba su password" minlength="6" maxlength="16" [ngModel]="usuario.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
+										<small *ngIf="password.invalid && password.touched && password.errors.required"class="form-text text-danger">Debe escribir su password</small>
+										<small *ngIf="password.invalid && password.touched && password.errors.minlength"class="form-text text-danger">debe tener al menos 6 caracteres en su password</small>
+									</div>
+									<div class="form-group col-md-6">
+										<label for="password" class="col-form-label">confirmar password</label>
+										<input class="form-control" type="password" [required]="!usuario.id" id="confirmar_password" name="confirmar_password" placeholder="Confirmar su password" minlength="6" maxlength="16" [ngModel]="usuario.confirmar_password" #confirmar_password="ngModel" [class.is-invalid]="confirmar_password.invalid && confirmar_password.touched">
+										<small *ngIf="confirmar_password.invalid && confirmar_password.touched && confirmar_password.errors.required"class="form-text text-danger">Debe escribir su password</small>
+										<small *ngIf="confirmar_password.invalid && confirmar_password.touched && confirmar_password.errors.minlength"class="form-text text-danger">debe tener al menos 6 caracteres en su password</small>
+									</div>
+								</div>
+								<button type="submit" class="btn btn-primary"><i class="fe-save"></i> Guardar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>

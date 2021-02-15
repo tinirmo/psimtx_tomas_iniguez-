@@ -1,77 +1,45 @@
 <div class="account-pages pt-5 mt-5 mb-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6 col-xl-5">
-                <div class="card bg-pattern">
-                    <div class="card-body p-4">
-                        <form action="mt-3">
-                            <div class="form-group">
-                                <label for="nombre">Nombre completo</label>
-                                <input class="form-control" type="text" id="nombre" name="nombre"  placeholder="Esbriba su nombre completo" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input class="form-control" type="email" id="email" name="email" required placeholder="Esbriba su email">
-                            </div>
-							<label>Intereses</label>
-							<div class="form-group" style="margin-left: 6px;">
-								<div class="checkbox form-check-inline">
-								<input type="checkbox" id="inlineCheckbox1" value="option1">
-								<label for="inlineCheckbox1"> Inline One </label>
-								</div>
-								<div class="checkbox form-check-inline">
-								<input type="checkbox" id="inlineCheckbox2" value="option1" checked>
-								<label for="inlineCheckbox2"> Inline Two </label>
-								</div>
-								<div class="checkbox form-check-inline">
-								<input type="checkbox" id="inlineCheckbox1" value="option1">
-								<label for="inlineCheckbox1"> Inline One </label>
-								</div>
-								<div class="checkbox form-check-inline">
-								<input type="checkbox" id="inlineCheckbox2" value="option1" checked>
-								<label for="inlineCheckbox2"> Inline Two </label>
-								</div>
-								<div class="checkbox form-check-inline">
-								<input type="checkbox" id="inlineCheckbox1" value="option1">
-								<label for="inlineCheckbox1"> Inline One </label>
-								</div>
-								<div class="checkbox form-check-inline">
-								<input type="checkbox" id="inlineCheckbox2" value="option1" checked>
-								<label for="inlineCheckbox2"> Inline Two </label>
-								</div>
-								<div class="checkbox form-check-inline">
-								<input type="checkbox" id="inlineCheckbox1" value="option1">
-								<label for="inlineCheckbox1"> Inline One </label>
-								</div>
-								<div class="checkbox form-check-inline">
-								<input type="checkbox" id="inlineCheckbox2" value="option1" checked>
-								<label for="inlineCheckbox2"> Inline Two </label>
-								</div>
-								<div class="checkbox form-check-inline">
-								<input type="checkbox" id="inlineCheckbox2" value="option1" checked>
-								<label for="inlineCheckbox2"> Inline Two </label>
-								</div>
-							</div>	
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input class="form-control" type="password" required id="password" name="password" placeholder="Esbriba su password" minlength="6" maxlength="16">
-                            </div>
-                            <div class="form-group">
-                                <label for="password"> confirmar password</label>
-                                <input class="form-control" type="password" required id="confirmar_password" name="confirmar_password" placeholder="Confirmar su password" minlength="6" maxlength="16">
-                            </div>
-                            <div class="form-group mb-0 text-center">
-                                <button class="btn btn-gradient btn-block" type="submit">Regístrate</button>
-                            </div>
-                        </form>
-                        <div class="row mt-4">
-                            <div class="col-sm-12 text-center">
-                                <p class="text-muted mb-0">¿Ya tienes una cuenta?<a [routerLink]="['/login']"  class="text-dark ml-1"><b>Login</b></a></p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+	<div class="container">
+		<div class="row justify-content-center">
+			<div class="col-md-8 col-lg-6 col-xl-5">
+				<div class="card bg-pattern">
+					<div class="card-body p-4">
+						<form  autocomplete="off" (ngSubmit)="onSubmitForm(form)" #form="ngForm">
+							<div class="form-group">
+								<label for="nombre">Nombre completo</label>
+								<input class="form-control" type="text" id="nombre" name="nombre"  placeholder="Esbriba su nombre completo" required [ngModel]="usuario.nombre" #nombre="ngModel" [class.is-invalid]="nombre.invalid && nombre.touched">
+								<small *ngIf="nombre.invalid && nombre.touched && nombre.errors.required"class="form-text text-danger">Debe escribir su nombre completo</small>
+							</div>
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input class="form-control" type="email" id="email" name="email" required placeholder="Esbriba su email" [ngModel]="usuario.email" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+								<small *ngIf="email.invalid && email.touched && email.errors.required"class="form-text text-danger">Debe escribir su email</small>
+								<small *ngIf="email.invalid && email.touched && email.errors.pattern"class="form-text text-danger">Esta mal escribir el formato de su email</small>
+							</div>
+							<div class="form-group">
+								<label for="password">Password</label>
+								<input class="form-control" type="password" required id="password" name="password" placeholder="Esbriba su password" minlength="6" maxlength="16" [ngModel]="usuario.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
+								<small *ngIf="password.invalid && password.touched && password.errors.required"class="form-text text-danger">Debe escribir su password</small>
+								<small *ngIf="password.invalid && password.touched && password.errors.minlength"class="form-text text-danger">debe tener al menos 6 caracteres en su password</small>
+							</div>
+							<div class="form-group">
+								<label for="password"> confirmar password</label>
+								<input class="form-control" type="password" required id="confirmar_password" name="confirmar_password" placeholder="Confirmar su password" minlength="6" maxlength="16" [ngModel]="usuario.confirmar_password" #confirmar_password="ngModel" [class.is-invalid]="confirmar_password.invalid && confirmar_password.touched">
+								<small *ngIf="confirmar_password.invalid && confirmar_password.touched && confirmar_password.errors.required"class="form-text text-danger">Debe escribir su password</small>
+								<small *ngIf="confirmar_password.invalid && confirmar_password.touched && confirmar_password.errors.minlength"class="form-text text-danger">debe tener al menos 6 caracteres en su password</small>
+							</div>
+							<div class="form-group mb-0 text-center">
+								<button class="btn btn-gradient btn-block" type="submit">Regístrate</button>
+							</div>
+						</form>
+						<div class="row mt-4">
+							<div class="col-sm-12 text-center">
+								<p class="text-muted mb-0">¿Ya tienes una cuenta?<a [routerLink]="['/login']"  class="text-dark ml-1"><b>Login</b></a></p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

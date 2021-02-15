@@ -3,13 +3,13 @@
         <div id="sidebar-menu">
             <ul class="metismenu" id="side-menu">
                 <li>
-                    <a [routerLink]="['/home']">
-                        <i class="fe-users"></i>
-                        <span>Usuarios</span>
-                    </a>
-                    <a  [routerLink]="['/home']">
+                    <a [routerLink]="['/home']" *ngIf="seccion.id_perfil == 1">
                         <i class="fe-list"></i>
                         <span>Lista de intereses</span>
+                    </a>
+                    <a  [routerLink]="['/home']" *ngIf="seccion.id_perfil == 2">
+                        <i class="fe-users"></i>
+                        <span>Usuarios</span>
                     </a>
                 </li>
             </ul>

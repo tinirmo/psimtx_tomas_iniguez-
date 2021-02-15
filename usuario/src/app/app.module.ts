@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
+import { Select2Module } from "ng-select2-component";
 
 import { APP_ROUTING } from './app.routes';
 
@@ -12,6 +15,8 @@ import { HomeComponent } from './components/home/home.component';
 import { MenuComponent } from './components/shared/menu/menu.component';
 import { InteresesComponent } from './components/intereses/intereses.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { UsuariosComponent } from './components/usuarios/usuarios.component';
+import { UsuarioComponent } from './components/usuario/usuario.component';
 
 @NgModule({
   declarations: [
@@ -22,11 +27,15 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     HomeComponent,
     MenuComponent,
     InteresesComponent,
-    FooterComponent
+    FooterComponent,
+    UsuariosComponent,
+    UsuarioComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
+    Select2Module,
     APP_ROUTING
   ],
   providers: [],

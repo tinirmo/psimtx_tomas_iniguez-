@@ -3,16 +3,12 @@
 		<li class="dropdown notification-list">
 			<a class="nav-link dropdown-toggle nav-user mr-0 waves-effect waves-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
 				<img src="./assets/images/avatar-1.jpg" alt="user-image" class="rounded-circle">
-				<span class="ml-1">Samuel <i class="mdi mdi-chevron-down"></i> </span>
+				<span class="ml-1">{{ seccion.nombre }}<i class="mdi mdi-chevron-down"></i> </span>
 			</a>
 			<div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-				<a href="javascript:void(0);" class="dropdown-item notify-item">
-					<i class="fe-user"></i>
-					<span>Profile</span>
-				</a>
-				<a href="javascript:void(0);" class="dropdown-item notify-item">
+				<a  class="dropdown-item notify-item" (click)="cerrarSeccion()">
 					<i class="fe-log-out"></i>
-					<span>Logout</span>
+					<span>Cerrar sesión</span>
 				</a>
 			</div>
 		</li>
