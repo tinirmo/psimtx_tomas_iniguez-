@@ -46,6 +46,7 @@
 										<input class="form-control" type="password" [required]="!usuario.id" id="password" name="password" placeholder="Esbriba su password" minlength="6" maxlength="16" [ngModel]="usuario.password" #password="ngModel" [class.is-invalid]="password.invalid && password.touched">
 										<small *ngIf="password.invalid && password.touched && password.errors.required"class="form-text text-danger">Debe escribir su password</small>
 										<small *ngIf="password.invalid && password.touched && password.errors.minlength"class="form-text text-danger">debe tener al menos 6 caracteres en su password</small>
+
 									</div>
 									<div class="form-group col-md-6">
 										<label for="password" class="col-form-label">confirmar password</label>
